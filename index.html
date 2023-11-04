@@ -1,0 +1,139 @@
+<html lang="en"><head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>登录界面</title> 
+  <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: url('http://wp.5ghkw.cn/view.php/ba3795aaa6c5f90eca4d2407c7066818.png') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .login-container {
+            width: 300px;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+        }
+        .welcome-message {
+            background-color: rgba(173, 216, 230, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            display: none;
+            animation: fadeInOut 2s ease;
+        }
+        .error-message {
+            color: red;
+            border: 2px solid red;
+            border-radius: 10px;
+            padding: 10px;
+            margin-top: 10px;
+            opacity: 0;
+            animation: fadeInOut 2s ease;
+        }
+        .login-button {
+            font-family: '宋体';
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .warning-icon {
+            width: 100px;
+            height: 100px;
+            background-image: url('http://wp.5ghkw.cn/view.php/508d7d63c295fa56928c3e1bdd32fc7d.jpg'); /* 替换为你的警告图标链接 */
+            background-size: cover;
+            position: fixed;
+            bottom: 50%;
+            right: 50%;
+            transform: scale(0.1) translate(50%, 50%);
+            opacity: 0;
+            transition: all 2s ease;
+        }
+
+        .show-warning-icon {
+            transform: scale(1) translate(-50%, -50%);
+            opacity: 1;
+        }
+
+        @keyframes fadeInOut {
+            0% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+    </style> 
+  <script src="js/jq.js"></script>
+ </head> 
+ <body id="v1"> 
+  <div id="v2" class="login-container"> 
+   <h2 id="v3">登录 Madeby LIrUI</h2> 
+   <form id="loginForm"> 
+    <label id="v4" for="username">用户名:</label> 
+    <input type="text" id="username" name="username" placeholder="请输入用户名">
+    <br id="v5">
+    <br id="v6"> 
+    <label id="v7" for="password">密码:</label> 
+    <input type="password" id="password" name="password" placeholder="请输入密码">
+    <br id="v8">
+    <br id="v9"> 
+    <div class="error-message" id="errorMessage" style="opacity: 0; animation: 2s ease 0s 1 normal none running fadeOut;">
+     密码错误，请重新输入
+    </div> 
+    <input id="v10" type="button" class="login-button" value="登录" onclick="checkLogin()"> 
+   </form> 
+   <div class="welcome-message" id="welcomeMessage"> 
+    <p id="v11">欢迎</p> 
+   </div> 
+  </div> 
+  <div id="v12" class="warning-icon"></div> 
+  <script>
+        function checkLogin() {
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+    var welcomeMessage = document.getElementById("welcomeMessage");
+    var warningIcon = document.querySelector(".warning-icon");
+    var errorMessage = document.getElementById("errorMessage");
+
+    if (username === "wc" && password === "123") {
+        welcomeMessage.style.display = "block";
+        setTimeout(function() {
+            welcomeMessage.style.display = "none";
+        }, 2000); // 欢迎消息显示2秒后自动消失
+
+        // 密码验证通过后跳转至指定网址
+        window.location.href = "https://wiond650.github.io/gztrwclt/";
+    } else {
+        // 显示警告图标
+        warningIcon.classList.add("show-warning-icon");
+        setTimeout(function() {
+            // 隐藏警告图标
+            warningIcon.classList.remove("show-warning-icon");
+        }, 2000); // 警告图标显示2秒后自动消失
+
+        // 显示错误消息
+        errorMessage.style.opacity = 1;
+        errorMessage.style.animation = "fadeOut 2s ease";
+        setTimeout(function() {
+            // 隐藏错误消息
+            errorMessage.style.opacity = 0;
+        }, 2000); // 错误消息显示2秒后自动消失
+    }
+}
+
+    </script>  }   
+  </body>
+</html>
